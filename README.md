@@ -22,6 +22,16 @@ Getting Started:
   docker run -it -d -e CLUSTERID=cluster-5la5cwabs7v -v cloudhsm_data:/root/data --name cloudhsm -e REGION=us-west-2 walkerk1980/cloudhsm-base /usr/local/bin/startup.sh
 
 
+Example commands once container is running:
+
+  ensure that client is connected: docker logs cloudhsm
+
+  connect to bash on container: docker exec -it cloudhsm 
+  
+  Within bash -  create CA: createCA.sh
+
+  Within bash - CloudHSM Managment Utilitiy: /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
+
 ENV VARS:
 
   CLUSTERID is for the Cluster Id of your initialized CloudHSM Cluster containing at least one running HSM.
