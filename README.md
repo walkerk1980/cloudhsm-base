@@ -1,16 +1,36 @@
-CloudHSM client container based on Ubuntu with CloudHSM client installed.
-Private Openssl CA provided to sign CloudHSM Cluster Certificate.
+CloudHSM client container based on Ubuntu with CloudHSM client Installed.
+
+Prerequisites:
+
+  Container host Instance requires an EC2 Instance Profile with IAM permissions that allow the container to pull the CloudHSM Cluster information.
+  Requires you to provide the CLUSTERID of an HSM Cluster with at least one running HSM in the same Region/VPC as the host.
+  Cluster/HSM requires the proper Security Groups allowing the Instance/Container to contact it.
+  For more infomation please see the CloudHSM documentation. [1] 
+
+  [1] Getting Started with AWS CloudHSM - https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html
 
 Example Commands:
 
-docker run -it -d -e CASUBJECT=example3.com -e REGION=us-west-2 -e CLUSTERID=cluster-6lc5awaas7v --name cloudhsm walkerk1980/cloudhsm-base /usr/local/bin/startup.sh
+  docker volume create --name cloudhsm_data
+  docker run -it -d --rm --name cloudhsm -v cloudhsm_data:/root/data/ walkerk1980/cloudhsm-base /bin/bash
+  docker cp /path/to/customerCA.crt cloudhsm:/root/data/
+  docker stop cloudhsm
+  docker run -it -d -e CLUSTERID=cluster-5la5cwabs7v -v cloudhsm_data:/root/data --name cloudhsm -e REGION=us-west-2 walkerk1980/cloudhsm-base /usr/local/bin/startup.sh
+
 
 ENV VARS:
 
-REGION is for the AWS Region you would like your Private CA to be created in.
+  CLUSTERID is for the Cluster Id of your initialized CloudHSM Cluster containing at least one running HSM.
 
-CASUBJECT is for the subject of the local CA to be created.
+  REGION is for the AWS Region that your CloudHSM Cluster is located  in.
 
-CAKEYPASS is for the local CA private key password.
+  CASUBJECT (Optional) is for the subject of the local CA to be created.
 
-CLUSTERID is for the Cluster Id if reusing an existing cluster.
+  CAKEYPASS (Optional) is for the local CA private key password.
+
+
+Internal Container Commands:
+
+  createCA.sh - Set up the local CA using the information provided in CASUBJECT and CAKEYPASS. This will create an openssl CA and move it to the data volume
+
+  cainfo.sh - Get info about the customerCA.crt in place within the conatiner
