@@ -12,9 +12,13 @@ Prerequisites:
 Getting Started:
 
   docker volume create --name cloudhsm_data
+
   docker run -it -d --rm --name cloudhsm -v cloudhsm_data:/root/data/ walkerk1980/cloudhsm-base /bin/bash
+
   docker cp /path/to/customerCA.crt cloudhsm:/root/data/
+
   docker stop cloudhsm
+
   docker run -it -d -e CLUSTERID=cluster-5la5cwabs7v -v cloudhsm_data:/root/data --name cloudhsm -e REGION=us-west-2 walkerk1980/cloudhsm-base /usr/local/bin/startup.sh
 
 
