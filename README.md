@@ -9,7 +9,7 @@ Prerequisites:
 
   [1] Getting Started with AWS CloudHSM - https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html
 
-Example Commands:
+Getting Started:
 
   docker volume create --name cloudhsm_data
   docker run -it -d --rm --name cloudhsm -v cloudhsm_data:/root/data/ walkerk1980/cloudhsm-base /bin/bash
@@ -33,4 +33,4 @@ Internal Container Commands:
 
   createCA.sh - Set up the local CA using the information provided in CASUBJECT and CAKEYPASS. This will create an openssl CA and move it to the data volume
 
-  cainfo.sh - Get info about the customerCA.crt in place within the conatiner
+  cainfo.sh - Get info about the customerCA.crt in place within the container
