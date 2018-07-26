@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cid=$(echo '`'$CLUSTERID'`')
+cid=$CLUSTERID
 
 if [ "$(echo $1|wc -c)"  -lt "2" ];then
   echo "Usage: addHSM.sh <Availability Zone letter>"
@@ -15,4 +15,4 @@ fi
 
 echo -e "\n\rAdding HSM in AZ $REGION$1 to Cluster: $cid\n\r"
 
-aws cloudhsmv2 create-hsm --cluster-id $cid --availability-zone "$REGION"$1
+aws cloudhsmv2 create-hsm --cluster-id $cid --availability-zone "$REGION"$1 --region $REGION
