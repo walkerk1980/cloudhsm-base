@@ -2,7 +2,7 @@
 
 cid=$(echo '`'$CLUSTERID'`')
 
-eniip=$(aws cloudhsmv2 describe-clusters --region $REGION --query "Clusters[?ClusterId==$cid].{EniIp:Hsms[?State==\`ACTIVE\`].EniIp}"  --output text|cut -f2)
+eniip=$(aws cloudhsmv2 describe-clusters --region $REGION --query "Clusters[?ClusterId==$cid].{EniIp:Hsms[?State==\`ACTIVE\`].EniIp}"  --output text|cut -f2|head -1)
 
 echo -e "\n\rQuerying for an active HSM in ClusterId $CLUSTERID in Region $REGION\n\r"
 
