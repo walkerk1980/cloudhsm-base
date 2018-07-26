@@ -13,6 +13,6 @@ if [ "$(echo $1|wc -c)"  -gt "2" ];then
   exit 1
 fi
 
-echo -e "\n\rAdding HSM in AZ $1 to Cluster: $cid\n\r"
+echo -e "\n\rAdding HSM in AZ $REGION$1 to Cluster: $cid\n\r"
 
 aws cloudhsmv2 create-hsm --cluster-id $cid --availability-zone "$REGION"$1
