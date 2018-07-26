@@ -17,3 +17,4 @@ fi
 echo -e "\n\rUpdating client config with HSM IP: $eniip\n\r"
 
 /opt/cloudhsm/bin/configure -a $eniip
+/opt/cloudhsm/bin/configure -m
