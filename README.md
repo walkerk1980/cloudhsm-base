@@ -45,6 +45,11 @@ ENV VARS:
 
   CAKEYPASS (Optional) is for the local CA private key password.
 
+  AWS_ACCESS_KEY_ID (Optional) is for pulling requried cluster information if Instance Profile is not used.
+
+  AWS_SECRET_ACCESS_KEY (Optional) is for pulling requried cluster information if Instance Profile is not used.
+
+  AWS_SESSION_TOKEN (Optional) is for pulling requried cluster information if Instance Profile is not used.
 
 Internal Container Commands:
 

@@ -16,4 +16,5 @@ COPY startup.sh /usr/local/bin/startup.sh
 COPY cloudhsmClient.sh /usr/local/bin/cloudhsmClient.sh
 COPY createCA.sh /usr/local/bin/createCA.sh
 COPY cainfo.sh /usr/local/bin/cainfo.sh
+COPY addHSM.sh /usr/local/bin/addHSM.sh
 COPY updateClientConfig.sh /usr/local/bin/updateClientConfig.sh
