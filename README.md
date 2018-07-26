@@ -2,12 +2,15 @@ CloudHSM client container based on Ubuntu with CloudHSM client Installed.
 
 Prerequisites:
 
-  Container host Instance requires an EC2 Instance Profile with IAM permissions that allow the container to pull the CloudHSM Cluster information.
+  Container host Instance requires either an EC2 Instance Profile with IAM permissions that allow the container to pull 
+  the CloudHSM Cluster information or you must pass the container IAM Access Key Credential Enviornment Variables. [1][2]
   Requires you to provide the CLUSTERID of an HSM Cluster with at least one running HSM in the same Region/VPC as the host.
   Cluster/HSM requires the proper Security Groups allowing the Instance/Container to contact it.
-  For more infomation please see the CloudHSM documentation. [1] 
+  For more infomation please see the CloudHSM documentation. [3] 
 
-  [1] Getting Started with AWS CloudHSM - https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html
+  [1] Using Instance Profiles - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
+  [2] Environment Variables - https://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html
+  [3] Getting Started with AWS CloudHSM - https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html
 
 Getting Started:
 
