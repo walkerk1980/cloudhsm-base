@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:xenial
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --assume-yes -y --yes -f install -y \ 
   openssl \
