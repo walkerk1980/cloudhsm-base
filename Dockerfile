@@ -1,6 +1,17 @@
 FROM ubuntu
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --assume-yes -y --yes -f dist-upgrade
-RUN DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --assume-yes -y --yes -f install -y openssl dnsutils nano tcpdump screen python3 python3-pip groff wget libedit2
+RUN apt-get update && \
+  DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --assume-yes -y --yes -f install -y \ 
+  openssl \
+  dnsutils \
+  nano \
+  tcpdump \
+  screen \
+  python3 \
+  python3-pip \
+  groff \
+  wget \
+  libedit2 \
+  && rm -rf /var/lib/apt/lists/*
 RUN /usr/bin/pip3 install awscli
 WORKDIR /root/
 RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb
