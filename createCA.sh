@@ -21,4 +21,4 @@ cd /root/setup_ca/
 /bin/echo -e "$CAKEYPASS\n\r" | openssl req -config openssl_root.cnf -key private/root_private_key.pem -passin stdin -new -x509 -days 730 -sha256 -extensions v3_ca -out certs/ca.pem -subj "/C=US/ST=Washington/L=Seattle/O=ExampleCompany/CN=$CASUBJECT"
 
 /bin/mv /root/setup_ca /root/data/ca
-/bin/ln -s /root/data/ca /root/ca
+/bin/ln -sf /root/data/ca /root/ca
