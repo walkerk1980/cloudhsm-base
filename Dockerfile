@@ -14,7 +14,7 @@ RUN apt-get update && \
   && rm -rf /var/lib/apt/lists/*
 RUN /usr/bin/pip3 install awscli
 WORKDIR /root/
-RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb
+RUN /usr/bin/wget wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb
 WORKDIR /root/
 COPY ca /root/setup_ca
 COPY openssl_root.cnf /root/setup_ca/openssl_root.cnf
