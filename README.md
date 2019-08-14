@@ -29,7 +29,7 @@ Example commands once container is running:
 
   ensure that client is connected: docker logs cloudhsm
 
-  connect to bash on container: docker exec -it cloudhsm 
+  connect to bash on container: docker exec -it cloudhsm /bin/bash
   
   Within bash -  create CA: createCA.sh
 
