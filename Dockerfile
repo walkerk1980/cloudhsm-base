@@ -14,7 +14,7 @@ RUN apt-get update && \
   libedit2 \
   && rm -rf /var/lib/apt/lists/*
 RUN /usr/bin/pip3 install awscli
-RUN /ln -s /usr/bin/python3 /usr/bin/python
+RUN /bin/ln -s /usr/bin/python3 /usr/bin/python
 WORKDIR /root/
 RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb
 RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client-dyn_latest_amd64.deb
