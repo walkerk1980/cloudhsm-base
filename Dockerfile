@@ -7,6 +7,7 @@ RUN apt-get update && \
   nano \
   tcpdump \
   screen \
+  python \
   python3 \
   python3-pip \
   groff \
