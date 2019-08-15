@@ -17,8 +17,8 @@ RUN apt-get update && \
 RUN /usr/sbin/update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 RUN /usr/bin/pip3 install awscli
 WORKDIR /root/
-RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb
-RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client-dyn_latest_amd64.deb
+RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb && /bin/rm cloudhsm-client_latest_amd64.deb
+RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client-dyn_latest_amd64.deb && /bin/rm cloudhsm-client-dyn_latest_amd64.deb
 WORKDIR /root/
 COPY ca /root/setup_ca
 COPY openssl_root.cnf /root/setup_ca/openssl_root.cnf
