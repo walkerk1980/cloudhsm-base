@@ -1,8 +1,6 @@
 FROM ubuntu:xenial
-RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb && /bin/rm cloudhsm-client_latest_amd64.deb
-RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client-dyn_latest_amd64.deb && /bin/rm cloudhsm-client-dyn_latest_amd64.deb
-RUN apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --assume-yes -y --yes -f install -y \ 
+RUN apt-get update \
+  && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --assume-yes -y --yes -f install -y \ 
   libjson-c2 \
   openssl \
   dnsutils \
@@ -17,6 +15,11 @@ RUN apt-get update && \
   libedit2 \
   && /opt/cloudhsm/bin/setup_redis \
   && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+  && /opt/cloudhsm/bin/setup_redis \
+  && rm -rf /var/lib/apt/lists/*
+RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb && /bin/rm cloudhsm-client_latest_amd64.deb
+RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client-dyn_latest_amd64.deb && /bin/rm cloudhsm-client-dyn_latest_amd64.deb
 RUN /usr/sbin/update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 RUN /usr/bin/pip3 install awscli
 WORKDIR /root/
