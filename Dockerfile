@@ -12,6 +12,7 @@ RUN apt-get update && \
   groff \
   wget \
   libedit2 \
+  && /opt/cloudhsm/bin/setup_redis \
   && rm -rf /var/lib/apt/lists/*
 RUN /usr/sbin/update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 RUN /usr/bin/pip3 install awscli
