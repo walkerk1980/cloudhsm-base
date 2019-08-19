@@ -13,10 +13,6 @@ RUN apt-get update \
   groff \
   wget \
   libedit2 \
-  && /opt/cloudhsm/bin/setup_redis \
-  && rm -rf /var/lib/apt/lists/*
-RUN apt-get update \
-  && /opt/cloudhsm/bin/setup_redis \
   && rm -rf /var/lib/apt/lists/*
 RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client_latest_amd64.deb && /bin/rm cloudhsm-client_latest_amd64.deb
 RUN /usr/bin/wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb && /usr/bin/dpkg -i cloudhsm-client-dyn_latest_amd64.deb && /bin/rm cloudhsm-client-dyn_latest_amd64.deb
